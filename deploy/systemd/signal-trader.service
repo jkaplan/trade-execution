@@ -1,0 +1,16 @@
+[Unit]
+Description=signal-trader dry-run service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/signal-trader/current
+EnvironmentFile=/etc/signal-trader/signal-trader.env
+ExecStart=/usr/bin/env node dist/main.js
+Restart=always
+RestartSec=5
+User=signaltrader
+Group=signaltrader
+
+[Install]
+WantedBy=multi-user.target
